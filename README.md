@@ -1,2 +1,2 @@
 # DataProducts
-Assignment for Coursera Developing Data Productions course
+Assignments for Coursera Developing Data Productions course
