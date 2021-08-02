@@ -1,0 +1,62 @@
+---
+title: "Week 2 Assignment"
+author: "Bradley Burquest"
+date: "8/1/2021"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Surfside Condominium Collapse
+
+Champlain Towers South
+ On Thursday, June 24, 2021, at approximately 1:25 a.m. EDT, Champlain Towers South, a 12-story 
+ beachfront condominium in the Miami suburb of Surfside, Florida, United States, partially collapsed killing  as many as 93 people.
+
+```{r, eval=TRUE, echo=FALSE}
+library(leaflet)
+condo_map <- leaflet() %>% 
+  addTiles()
+condo_map <- condo_map %>%
+  addCircleMarkers(
+    lat=25.87292221811114, lng=-80.12076316605626, 
+    radius = 70,
+    color = 'red',
+    stroke = FALSE, fillOpacity = 0.25
+  ) %>%
+  addMarkers(lat=25.87292221811114, lng=-80.12076316605626, 
+             popup="Champlain Towers South <br/>12-story condominium collapsed June 24, 2021 <br/> killing at least 93 people") %>%
+  addPopups( lat=25.87292221811114, lng=-80.12076316605626, 
+            "Champlain Towers South <br/>12-story condominium collapsed June 24, 2021 <br/> killing at least 93 people") %>%
+  addMarkers(lat=25.87453796673623, lng=-80.12101838919622,  
+             popup="Champlain Towers North") %>%
+  addMarkers(lat=25.873909048012845, lng=-80.12095400858368,  
+             popup="Champlain Towers East")
+condo_map
+```
+
+The above map was created with the following RMarkdown code
+```{r, eval=FALSE, echo=TRUE}
+library(leaflet)
+condo_map <- leaflet() %>% 
+  addTiles()
+condo_map <- condo_map %>%
+  addMarkers(lat=25.87292221811114, lng=-80.12076316605626, 
+             popup="Champlain Towers South <br/>12-story condominium collapsed June 24, 2021 <br/> killing at least 93 people") %>%
+  addPopups( lat=25.87292221811114, lng=-80.12076316605626, 
+            "Champlain Towers South <br/>12-story condominium collapsed June 24, 2021 <br/> killing at least 93 people") %>%
+  addCircleMarkers(
+    lat=25.87292221811114, lng=-80.12076316605626, 
+    radius = 100,
+    color = 'red',
+    stroke = FALSE, fillOpacity = 0.25
+  ) %>%
+  addMarkers(lat=25.87453796673623, lng=-80.12101838919622,  
+             popup="Champlain Towers North") %>%
+  addMarkers(lat=25.873909048012845, lng=-80.12095400858368,  
+             popup="Champlain Towers East")
+```
+
+
