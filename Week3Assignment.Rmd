@@ -38,5 +38,23 @@ plot_ly(affairs, x=~age, y=~yearsmarried, z=~affairs) %>% add_markers( color=~ge
 
 ```
 
+## Code
+```{r echo=TRUE, eval=FALSE, message=FALSE}
+library(plotly)
+library(tidyr)
+library(dplyr)
+
+affairs <- read.csv("./data/Affairs.csv")
+affairs$children <- as.factor(affairs$children)
+affairs$gender <- as.factor(affairs$gender)
+
+plot_ly(affairs, x=~age, y=~yearsmarried, z=~affairs) %>% 
+    add_markers( color=~gender, colors=c("pink","blue")) %>%
+    layout( scene=list( xaxis=list(title="Age"),
+                        yaxis=list(title="Num. of yrs married"),
+                        zaxis=list(title="Num. of Affairs")))
+
+
+```
 
 
