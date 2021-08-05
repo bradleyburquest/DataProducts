@@ -1,0 +1,42 @@
+---
+title: "Week 3 Assignment"
+author: "Bradley Burquest"
+date: "8/2/2021"
+output: ioslides_presentation
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+## Affairs 
+
+This assignment is based on data from the Affairs dataset that is part of the Rdatasets package. 
+
+https://vincentarelbundock.github.io/Rdatasets/doc/AER/Affairs.html
+
+The following 3D plot shows a comparsion of the people surveyed, the number of affairs by age, number of years married, and gender.  
+
+
+
+## 3D Plot of Affair data
+Legend: x=Age, y=Num. of years married, z=Num. of affairs
+
+```{r echo=FALSE, message=FALSE}
+library(plotly)
+library(tidyr)
+library(dplyr)
+
+affairs <- read.csv("./data/Affairs.csv")
+affairs$children <- as.factor(affairs$children)
+affairs$gender <- as.factor(affairs$gender)
+
+plot_ly(affairs, x=~age, y=~yearsmarried, z=~affairs) %>% add_markers( color=~gender, colors=c("pink","blue")) %>%
+    layout( scene=list( xaxis=list(title="Age"),
+                        yaxis=list(title="Num. of yrs married"),
+                        zaxis=list(title="Num. of Affairs")))
+
+
+```
+
+
+
